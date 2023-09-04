@@ -23,7 +23,7 @@ class Product(models.Model):
     date_of_change = models.DateTimeField(verbose_name='дата изменения')
 
     def __str__(self):
-        return f'{self.name} {self.price}'
+        return f'{self.name}: {self.description}, {self.price}'
 
     class Meta:
         verbose_name = 'продукт'
