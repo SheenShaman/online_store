@@ -1,0 +1,23 @@
+{% extends 'catalog/home.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-5">
+        <a href="{% url 'blog:create' %}" class="btn btn-primary"> Создать блог </a>
+    </div>
+    {% for object in object_list %}
+    <div class="col-md-4">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+        </div>
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{ object.price }}</h1>
+            <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                <li>{{object.description}}</li>
+            </ul>
+            <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:category' object.pk %}">Посмотреть</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

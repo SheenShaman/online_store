@@ -1,0 +1,28 @@
+{% extends 'catalog/home.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="row">
+        {% for object in object_list %}
+            <div class="col-md-5">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.title | title }}</h4>
+                </div>
+                <img class="card-img-top"
+                 src="{% mymedia object.preview %}"
+                 alt="Card image cap" />
+                <div class="card-body">
+                     <div class="card-body">
+                            <p class="card-text">Содержимое: {{ object.content|default:"-" }}</p>
+                            <span class="text-muted">Дата создания: {{ object.date_of_creation|default:"-" }}</span><br>
+                            <span class="text-muted">Просмотры: {{ object.views }}</span><br>
+
+                     </div>
+                    <div class="card-footer">
+                        <a class="btn btn-link" href="{% url 'catalog:product_update' object.pk %}">Изменить</a>
+                        <a class="btn btn-outline-danger float-right" href="{% url 'catalog:product_delete' object.pk %}">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
