@@ -16,14 +16,6 @@ class IndexView(TemplateView):
         return context_data
 
 
-# def index(request):
-#     context = {
-#         'object_list': Product.objects.all(),
-#         'title': 'SkyStore - Главная'
-#     }
-#     return render(request, 'catalog/index.html', context)
-
-
 def contacts(request):
     context = {
         'title': 'Контакты'
@@ -31,28 +23,11 @@ def contacts(request):
     return render(request, 'catalog/contacts.html', context)
 
 
-# def category(request):
-#     context = {
-#         'object_list': Category.objects.all(),
-#         'title': 'Категории Товаров'
-#     }
-#     return render(request, 'catalog/category_list.html', context)
-
-
 class CategoriesListView(ListView):
     model = Category
     extra_context = {
         'title': 'Категории Товаров'
     }
-
-
-# def category_products(request, pk):
-#     category_item = Category.objects.get(pk=pk)
-#     context = {
-#         'object_list': Product.objects.filter(category_id=pk),
-#         'title': f'Товары категории {category_item.name}'
-#     }
-#     return render(request, 'catalog/product_list.html', context)
 
 
 class CategoryListView(ListView):
@@ -71,14 +46,6 @@ class CategoryListView(ListView):
         context_data['title'] = f'Товары категории {category_item.name}'
         return context_data
 
-
-# def product(request, pk):
-#     product_item = Product.objects.get(pk=pk)
-#     context = {
-#         'object_list': Product.objects.filter(id=pk),
-#         'title': f'{product_item.name}'
-#     }
-#     return render(request, 'catalog/product_list.html', context)
 
 class ProductListView(ListView):
     model = Product
