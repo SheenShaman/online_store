@@ -5,7 +5,12 @@
     <div class="card-body">
         <h1 class="card-title pricing-card-title">{{ object.price }} рублей</h1>
         <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-            <li>{{object.description | truncatechars:100}}</li>
+            <li>{{object.description | truncatechars:100}}</li><br>
+            {% for ver_item in object.version_set.all %}
+                {% if ver_item.is_active %}
+                    <span class="text-muted">Версия: {{ ver_item.name_of_version }}(#{{ ver_item.numbers_of_version }})</span>
+                {% endif %}
+            {% endfor %}
         </ul>
         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product' object.pk %}">Посмотреть</a>
     </div>
